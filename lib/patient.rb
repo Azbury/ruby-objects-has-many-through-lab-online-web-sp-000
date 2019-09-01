@@ -18,4 +18,13 @@ class Patient
   def appointments
     Appointment.all.select {|a| a.patient == self}
   end
+
+  def doctors
+    patient_doctors = []
+    Appointment.all.each do |a|
+      patient_doctors << a.doctor if a.patient == self
+    end
+    patient_doctors
+  end
+
 end
